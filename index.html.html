@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pago Hamburguesas 7°G</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f5f5f5;margin:0;padding:18px;color:#171717}
+.card{max-width:520px;margin:auto;background:white;border-radius:22px;padding:24px;box-shadow:0 8px 28px #0002}
+h1{text-align:center;margin:0 0 4px;font-size:30px}.sub{text-align:center;color:#555;margin-bottom:22px}
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.price{border:2px solid #222;border-radius:16px;padding:16px;text-align:center;font-size:18px}.price b{font-size:28px;display:block}
+.row{padding:11px 0;border-bottom:1px solid #eee}.label{font-size:13px;color:#666}.value{font-size:19px;font-weight:700;word-break:break-word}
+button{width:100%;padding:15px;margin-top:9px;border:0;border-radius:13px;font-size:17px;font-weight:700;cursor:pointer}
+.copy{background:#ededed;color:#111}.amount{background:#111;color:#fff}
+.ok{text-align:center;min-height:24px;font-weight:700;margin-top:12px}
+.note{font-size:14px;color:#555;text-align:center;margin-top:20px;line-height:1.4}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>🍔 Pago Hamburguesas</h1>
+<div class="sub">Stand 7°G</div>
+
+<div class="prices">
+ <div class="price">1 hamburguesa<b>$3.000</b><button class="amount" onclick="copyText('3000','Monto $3.000 copiado')">Copiar $3.000</button></div>
+ <div class="price">2 hamburguesas<b>$5.000</b><button class="amount" onclick="copyText('5000','Monto $5.000 copiado')">Copiar $5.000</button></div>
+</div>
+
+<div class="row"><div class="label">Titular</div><div class="value">Eduardo Andres Diaz</div></div>
+<div class="row"><div class="label">Banco</div><div class="value">Banco Falabella</div></div>
+<div class="row"><div class="label">Tipo de cuenta</div><div class="value">Cuenta Vista</div></div>
+
+<div class="row"><div class="label">RUT</div><div class="value">15.398.063-2</div>
+<button class="copy" onclick="copyText('15.398.063-2','RUT copiado')">📋 Copiar RUT</button></div>
+
+<div class="row"><div class="label">N.º de cuenta</div><div class="value">5-010-348607-9</div>
+<button class="copy" onclick="copyText('50103486079','Número de cuenta copiado (sin guiones)')">📋 Copiar número de cuenta</button></div>
+
+<div class="row"><div class="label">Correo</div><div class="value">litobasay2@gmail.com</div>
+<button class="copy" onclick="copyText('litobasay2@gmail.com','Correo copiado')">📋 Copiar correo</button></div>
+
+<div id="ok" class="ok"></div>
+<div class="note">Realiza la transferencia desde la app de tu banco y muestra el comprobante en caja.<br><b>¡Gracias por colaborar! 🍔</b></div>
+</div>
+<script>
+async function copyText(text,msg){
+ try { await navigator.clipboard.writeText(text); }
+ catch(e){
+   const t=document.createElement('textarea'); t.value=text; document.body.appendChild(t);
+   t.select(); document.execCommand('copy'); t.remove();
+ }
+ document.getElementById('ok').textContent='✓ '+msg;
+ setTimeout(()=>document.getElementById('ok').textContent='',2200);
+}
+</script>
+</body></html>
